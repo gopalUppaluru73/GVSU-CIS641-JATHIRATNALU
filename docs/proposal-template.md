@@ -1,6 +1,6 @@
-Team name:
+Team name: JATHIRATNALU
 
-Team members:
+Team members: Gopal Krishna Reddy Uppaluru, Akhila Addula, Rudra Pavan Kumar Kavalipurapu, Nikhil Lokam
 
 # Introduction
 

@@ -1,10 +1,11 @@
-# Team Name
+# GVSU-CIS641-JATHIRATNALU
 
-Project description (~1 paragraph)
+## Project description
+
 
 ## Team Members and Roles
 
-* Member 1 (Role 1, Role 2)
+* [Gopal Krishna Reddy Uppaluru](https://github.com/gopalUppaluru73/CIS641-HW2-Uppaluru)
 * Member 2 (Role 3, Role 4)
 * Member 3 (Role 5, Role 6)
 
