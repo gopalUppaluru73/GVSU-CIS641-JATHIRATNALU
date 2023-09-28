@@ -8,6 +8,7 @@
 * [Gopal Krishna Reddy Uppaluru](https://github.com/gopalUppaluru73/CIS641-HW2-Uppaluru)
 * [Akhila Addula](https://github.com/Akhila15823/CIS641-HW2-ADDULA)
 * [Rudra Pavan Kumar Kavalipurapu](https://github.com/gopalUppaluru73/CIS641-HW2-Uppaluru)
+* [Nikhil Lokam](https://github.com/revs28145/CIS641-HW2-LOKAM)
 
 ## Prerequisites
 
