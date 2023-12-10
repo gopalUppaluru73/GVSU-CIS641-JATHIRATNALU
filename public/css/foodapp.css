@@ -1,0 +1,39 @@
+.form{
+    background-color: #fff;
+    padding: calc(10px * 1);
+    border-radius: calc(5px * 1);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.form input{
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+}
+
+.form button{
+    cursor: pointer;
+    width: 100%;
+    background-color:rgba(0, 0, 0, 0.1);
+}
+
+img.img{
+    max-width: 100%;
+}
+
+.cartN{
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px 8px;
+    margin: 5px;
+}
+
+.cartB{
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+.account{
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
