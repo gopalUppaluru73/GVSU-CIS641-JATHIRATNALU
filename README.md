@@ -15,6 +15,12 @@
 - ** Visual studio code for front development
 - ** Firebase for back end development
 
+
+## Project Links
+
+* [software_requirements_specification_final](https://github.com/gopalUppaluru73/GVSU-CIS641-JATHIRATNALU/blob/main/docs/software_requirements_specification_final.md)
+* [Portfolio Website Link](https://gopaluppaluru73.github.io/GVSU-CIS641-JATHIRATNALU/)
+
 ## Installation and Setup Instructions
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
