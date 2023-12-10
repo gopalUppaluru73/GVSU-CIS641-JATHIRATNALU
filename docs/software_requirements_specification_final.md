@@ -175,6 +175,8 @@ Real-time monitoring systems discover abnormalities and performance concerns, se
 
 This guides application artifacts, aligning function/non-functional requirements; links reference each artifact.
 
-* 
-* 
-* 
+* [Activity Diagram](https://github.com/gopalUppaluru73/GVSU-CIS641-JATHIRATNALU/blob/main/artifacts/Activity_Diagram.jpeg)
+* [Class Diagram](https://github.com/gopalUppaluru73/GVSU-CIS641-JATHIRATNALU/blob/main/artifacts/Class_Diagram.jpeg)
+* [Object Diagram](https://github.com/gopalUppaluru73/GVSU-CIS641-JATHIRATNALU/blob/main/artifacts/Object-diagram.jpeg)
+* [Use Case Diagram](https://github.com/gopalUppaluru73/GVSU-CIS641-JATHIRATNALU/blob/main/artifacts/Use_case_Diagram.jpeg)
+* [Window Navigation Diagram](https://github.com/gopalUppaluru73/GVSU-CIS641-JATHIRATNALU/blob/main/artifacts/window-navigation.pdf)
