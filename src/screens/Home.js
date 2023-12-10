@@ -41,54 +41,56 @@ export default function Home() {
   }
 
   const add = item => {
-    if(cart.length === 0){
-      let c = [{...item, qty: 1}]
-      setCart(c)
-      localStorage.setItem('cart', JSON.stringify(c))
-      myContext.updateCart(c)
-      return
-    }
-    
-    const findI = myContext.cart.find(el=>el.name === item.name)
-    if(!findI){
-      let c = [...myContext.cart, {...item, qty: 1}]
-      setCart(c)
-      localStorage.setItem('cart', JSON.stringify(c))
-      myContext.updateCart(c)
-      return
+    if (cart.length === 0) {
+      let c = [{ ...item, qty: 1 }];
+      setCart(c);
+      localStorage.setItem('cart', JSON.stringify(c));
+      myContext.updateCart(c);
+      toast.success('Item added to cart!');
+      return;
     }
 
-    const myC = myContext.cart.map(el=>{
-      if(item.name === el.name){
-        console.log('found')
-        el['qty'] += 1
+    const findI = myContext.cart.find(el => el.name === item.name);
+    if (!findI) {
+      let c = [...myContext.cart, { ...item, qty: 1 }];
+      setCart(c);
+      localStorage.setItem('cart', JSON.stringify(c));
+      myContext.updateCart(c);
+      toast.success('Item added to cart!');
+      return;
+    }
+
+    const myC = myContext.cart.map(el => {
+      if (item.name === el.name) {
+        console.log('found');
+        el['qty'] += 1;
       }
-      return el
-    })
-    // console.log(myC)
-    localStorage.setItem('cart', JSON.stringify(myC))
-    setCart(myC)
-    myContext.updateCart(myC)
-  }
+      return el;
+    });
+    localStorage.setItem('cart', JSON.stringify(myC));
+    setCart(myC);
+    myContext.updateCart(myC);
+    toast.success('Item added to cart!');
+  };
+
 
   const products = prod.length > 0 ? prod.map((item, index)=>(
     <div className="col-6 padding-all-10" key={index}>
-      {/* <div><img src={item.recipe.image} alt="Product" className="img" /></div> */}
-      <img 
-        className="recipeTile__image" 
-        src={item.recipe.image}
-        alt="tile-image" 
-        onClick={() => window.open(item.recipe.url)}
-      />
       <div className='item-block'>
-        <div>{item.recipe.label}</div>
-        <button onClick={()=>add({name: item.recipe.label, img: item.recipe.image})} className="cursor-pointer add-btn">Add</button>
+        <img 
+          className="recipeTile__image" 
+          src={item.recipe.image}
+          alt={item.recipe.label}
+          onClick={() => window.open(item.recipe.url)}
+        />
+        <div className='item-name'>{item.recipe.label}</div>
+        <button onClick={() => add({ name: item.recipe.label, img: item.recipe.image })} className="cursor-pointer" style={{ padding: 5, backgroundColor: 'green', color: 'white' }}>Add</button>
       </div>
     </div>
   )) : <></>
 
   return (
-    <div>
+    <div className="width-100 min-height-100 off-white-bg" style={{ backgroundImage: 'url("https://i.ytimg.com/vi/IIBTVfneFCo/maxresdefault.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div className="padding-all-50" />
 
       <div className="width-45 width-lx-60 width-l-80 width-m-90 width-s-95 margin-auto">

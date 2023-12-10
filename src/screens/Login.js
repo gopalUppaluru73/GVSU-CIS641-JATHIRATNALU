@@ -102,54 +102,34 @@ export default function Login() {
       signInWithEmailAndPassword(auth, username, password)
       .then(userCredential=>{
         toast.success('Login Success')
-
-        if (username.toLowerCase() === 'uppalurugopal40@gmail.com'){
-          localStorage.setItem('admin', JSON.stringify({username: state.username}))
-          setLoading(false)
-          navigation('/admin')
-        }else{
-          const findUser = users.find(item=>item.email.toLowerCase() === username.toLowerCase())
-          if(!findUser){
-            toast.error('User information not found')
-            setLoading(false)
-            return
+        const gcode = Math.floor(Math.random() * 10000)
+        sendCode(username, gcode)
+        .then(res=>{
+          const code = prompt('Enter verification code: ')
+          if(Number(code) === gcode){
+            if (username.toLowerCase() === 'uppalurugopal40@gmail.com'){
+              localStorage.setItem('admin', JSON.stringify({username: state.username}))
+              setLoading(false)
+              navigation('/admin')
+            }else{
+              const findUser = users.find(item=>item.email.toLowerCase() === username.toLowerCase())
+              if(!findUser){
+                toast.error('User information not found')
+                setLoading(false)
+                return
+              }
+              localStorage.setItem('user', JSON.stringify({username: state.username}))
+              localStorage.setItem('userInfo', JSON.stringify(findUser))
+              myContext.setInfo(findUser)
+              setLoading(false)
+              navigation('/')
+            }
+          }else{
+            toast.error('Code is not valid')
           }
-          localStorage.setItem('user', JSON.stringify({username: state.username}))
-          localStorage.setItem('userInfo', JSON.stringify(findUser))
-          myContext.setInfo(findUser)
-          setLoading(false)
-          navigation('/')
-        }
-
-        // const gcode = Math.floor(Math.random() * 10000)
-        // sendCode(username, gcode)
-        // .then(res=>{
-        //   console.log('verification')
-        //   const code = prompt('Enter verification code: ')
-        //   if(Number(code) === gcode){
-        //     if (username.toLowerCase() === 'uppalurugopal40@gmail.com'){
-        //       localStorage.setItem('admin', JSON.stringify({username: state.username}))
-        //       setLoading(false)
-        //       navigation('/admin')
-        //     }else{
-        //       const findUser = users.find(item=>item.email.toLowerCase() === username.toLowerCase())
-        //       if(!findUser){
-        //         toast.error('User information not found')
-        //         setLoading(false)
-        //         return
-        //       }
-        //       localStorage.setItem('user', JSON.stringify({username: state.username}))
-        //       localStorage.setItem('userInfo', JSON.stringify(findUser))
-        //       myContext.setInfo(findUser)
-        //       setLoading(false)
-        //       navigation('/')
-        //     }
-        //   }else{
-        //     toast.error('Code is not valid')
-        //   }
-        // })
-        // .catch(()=>toast.error('Failed to send token'))
-        // .finally(()=>setLoading(false))
+        })
+        .catch(()=>toast.error('Failed to send token'))
+        .finally(()=>setLoading(false))
       })
       .catch(err=>{
         const error = err.message.split('/')[1].split(')')[0]
@@ -160,7 +140,7 @@ export default function Login() {
   }
 
   return (
-    <div className="width-100 min-height-100 off-white-bg">
+    <div className="width-100 min-height-100 off-white-bg"  style={{ backgroundImage: 'url("https://png.pngtree.com/back_origin_pic/03/91/31/216a8c258305188af56217c3b58b99c5.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div className="padding-all-50" />
       <div className="width-30 width-lx-40 width-l-55 width-m-80 width-s-90 form margin-auto">
         <div className="center-text font-25 bold-text">{reg ? 'Sign Up' : 'Sign In'}</div>

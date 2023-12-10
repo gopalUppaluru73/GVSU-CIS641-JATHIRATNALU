@@ -1,41 +1,42 @@
-import React, {useContext, useState, useEffect} from 'react'
-import { Context } from '../config/Provider'
-import { FcEmptyTrash } from "react-icons/fc";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import React, { useContext, useState, useEffect } from 'react';
+import { Context } from '../config/Provider';
+import { FcEmptyTrash } from 'react-icons/fc';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import Button from '../components/Button';
+import toast from 'react-hot-toast'; // Import toast
 
 import { app } from '../config/firebase';
-import { getDatabase, ref, set, push } from 'firebase/database'
+import { getDatabase, ref, set, push } from 'firebase/database';
 import { tables } from '../config/tables';
-import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 export default function Cart() {
-    const navigation = useNavigate()
-    const state = useContext(Context)
-    const [userOrders, setUserOrders] = useState([])
-    const [userObj, setUserObj] = useState(null)
-    const [loading, setLoading] = useState(false)
+  const navigation = useNavigate();
+  const state = useContext(Context);
+  const [userOrders, setUserOrders] = useState([]);
+  const [userObj, setUserObj] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-    // Firebase
-    const db = getDatabase(app)
-    const dbref = ref(db, `${tables.account}/${state.info.id}`)
-    const adminRef = ref(db, tables.orders)
+  // Firebase
+  const db = getDatabase(app);
+  const dbref = ref(db, `${tables.account}/${state.info.id}`);
+  const adminRef = ref(db, tables.orders);
 
-    useEffect(()=>{
-        const userInfo = localStorage.getItem('userInfo')
-        if (!userInfo) return
-        const info = JSON.parse(userInfo)
-        setUserOrders(info?.order ?? [])
-        setUserObj(info)
-    }, [])
+  useEffect(() => {
+    const userInfo = localStorage.getItem('userInfo');
+    if (!userInfo) return;
+    const info = JSON.parse(userInfo);
+    setUserOrders(info?.order ?? []);
+    setUserObj(info);
+  }, []);
 
-    const removeItem = ind => {
-        let c = state.cart
-        c.splice(ind, 1)
-        localStorage.setItem('cart', JSON.stringify(c))
-        state.updateCart(c)
-    }
+  const removeItem = (ind) => {
+    let c = state.cart;
+    const removedItem = c.splice(ind, 1)[0]; // Get the removed item
+    localStorage.setItem('cart', JSON.stringify(c));
+    state.updateCart(c);
+    toast.success(`${removedItem.name} removed from the cart!`); // Show notification
+  };
 
     const plus = ind => {
         let c = state.cart
@@ -74,7 +75,11 @@ export default function Cart() {
         <React.Fragment key={index}>
             <div className="flex-row align-items-center">
                 <div className="col-2 padding-all-5">
-                    <img src={item.img} alt="img" className="img" />
+                    <img 
+                    src={item.img} 
+                    alt="img" 
+                    className="img" 
+                    />
                 </div>
                 <div className="col-4 padding-all-5">
                     <div>{item.name}</div>
@@ -145,6 +150,7 @@ export default function Cart() {
 
   return (
     <>
+    <div className="width-100 min-height-100 off-white-bg" style={{ backgroundImage: 'url("https://image.freepik.com/free-photo/shopping-cart-plain-background-with-copy-space_23-2148288240.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
         <div className="padding-all-50" />
 
         {/* <div className="width-45 width-lx-60 width-l-80 width-m-90 width-s-95 margin-auto">
